@@ -8,21 +8,18 @@ import java.util.UUID;
 @Table(name = "TB_CLIENTE")
 public class ClienteModel extends PessoaModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idCliente;
-
     @Column(nullable = false, length = 11)
     private String telefoneCliente;
 
-    public UUID getId() {
-        return idCliente;
+    public ClienteModel() {
+        super();
     }
 
-    public void setId(UUID id) {
-        this.idCliente = id;
+    public String getTelefoneCliente() {
+        return telefoneCliente;
     }
 
-
-
+    public void setTelefoneCliente(String telefoneCliente) {
+        this.telefoneCliente = telefoneCliente;
+    }
 }

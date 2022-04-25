@@ -8,28 +8,18 @@ import java.util.UUID;
 @Table(name = "TB_FUNCIONARIO")
 public class FuncionarioModel extends PessoaModel{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idFunc;
-
     @Column(nullable = false)
     private double salario;
 
-
-
-    public UUID getId() {
-        return idFunc;
-    }
-
-    public void setId(UUID id) {
-        this.idFunc = id;
+    public FuncionarioModel() {
+        super();
     }
 
     public double getSalario() {
         return salario;
     }
 
-    public void setSalario(Double salario) {
+    public void setSalario(double salario) {
         this.salario = salario;
     }
 }

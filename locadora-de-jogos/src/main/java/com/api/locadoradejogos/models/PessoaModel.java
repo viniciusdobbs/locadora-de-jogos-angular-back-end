@@ -5,10 +5,14 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_Pessoa")
-public class PessoaModel implements Serializable {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class PessoaModel implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID idPessoa;
 
     @Column(nullable = false, length = 100)
     private String nome;
@@ -25,7 +29,13 @@ public class PessoaModel implements Serializable {
     @Column(nullable = false, length = 150)
     private String endereco;
 
+    public UUID getIdPessoa() {
+        return idPessoa;
+    }
 
+    public void setIdPessoa(UUID idPessoa) {
+        this.idPessoa = idPessoa;
+    }
 
     public String getNome() {
         return nome;
@@ -35,27 +45,35 @@ public class PessoaModel implements Serializable {
         this.nome = nome;
     }
 
-    public String getCPF() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCPF(String cpf) {
-        this.cpf= cpf;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getRG() {
+    public String getRg() {
         return rg;
     }
 
-    public void setRG(String rg) {
-        this.rg= rg;
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 
     public String getEmail() {
-        return rg;
+        return email;
     }
 
     public void setEmail(String email) {
-        this.email= email;
+        this.email = email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
