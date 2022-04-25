@@ -1,23 +1,35 @@
 package com.api.locadoradejogos.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "TB_FUNCIONARIO")
 public class FuncionarioModel extends PessoaModel{
 
-    @Column(nullable = false)
-    private double salario;
+    @Column(name = "NU_SALARIO", nullable = false)
+    private double salarioFunc;
+
+    @OneToMany(mappedBy="funcionario")
+    private List<LocacaoModel> locacao;
 
     public FuncionarioModel() {
         super();
     }
 
-    public double getSalario() {
-        return salario;
+    public double getSalarioFunc() {
+        return salarioFunc;
     }
 
-    public void setSalario(double salario) {
-        this.salario = salario;
+    public void setSalarioFunc(double salarioFunc) {
+        this.salarioFunc = salarioFunc;
+    }
+
+    public List<LocacaoModel> getLocacao() {
+        return locacao;
+    }
+
+    public void setLocacao(List<LocacaoModel> locacao) {
+        this.locacao = locacao;
     }
 }

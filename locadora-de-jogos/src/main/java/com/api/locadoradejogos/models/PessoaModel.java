@@ -11,22 +11,23 @@ public abstract class PessoaModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @Column(name = "ID_PESSOA")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idPessoa;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "TE_NOME", nullable = false, length = 100)
     private String nome;
 
-    @Column(nullable = false, length = 11)
+    @Column(name = "TE_CPF", nullable = false, length = 11)
     private String cpf;
 
-    @Column(nullable = false, length = 20)
+    @Column(name = "TE_RG", nullable = false, length = 20)
     private String rg;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "TE_EMAIL", nullable = false, length = 100)
     private String email;
 
-    @Column(nullable = false, length = 150)
+    @Column(name = "TE_ENDERECO", nullable = false, length = 150)
     private String endereco;
 
     public UUID getIdPessoa() {
@@ -76,4 +77,5 @@ public abstract class PessoaModel implements Serializable {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
 }

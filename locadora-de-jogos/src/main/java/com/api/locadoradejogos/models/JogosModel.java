@@ -1,30 +1,43 @@
 package com.api.locadoradejogos.models;
 
+import com.api.locadoradejogos.enums.ConsoleEnum;
+import com.api.locadoradejogos.enums.GeneroEnum;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_LOCADORA_JOGOS")
+@Table(name = "TB_JOGOS")
 public class JogosModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @Column(name = "ID_JOGO")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID idJogo;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "TE_NOME", nullable = false, length = 100)
     private String nome;
 
-    @Column(nullable = false, length = 100)
-    private String genero;
+    @Column(name = "EN_GENERO", nullable = false, length = 10)
+    @Enumerated(EnumType.STRING)
+    private GeneroEnum genero;
 
-    public UUID getId() {
-        return id;
+    @Column(name = "EN_CONSOLE", nullable = false, length = 10)
+    @Enumerated(EnumType.STRING)
+    private ConsoleEnum console;
+
+    @OneToMany(mappedBy="jogo")
+    private List<LocacaoModel> locacao;
+
+    public UUID getIdJogo() {
+        return idJogo;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setIdJogo(UUID idJogo) {
+        this.idJogo = idJogo;
     }
 
     public String getNome() {
@@ -35,11 +48,19 @@ public class JogosModel implements Serializable {
         this.nome = nome;
     }
 
-    public String getGenero() {
+    public GeneroEnum getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(GeneroEnum genero) {
         this.genero = genero;
+    }
+
+    public ConsoleEnum getConsole() {
+        return console;
+    }
+
+    public void setConsole(ConsoleEnum console) {
+        this.console = console;
     }
 }

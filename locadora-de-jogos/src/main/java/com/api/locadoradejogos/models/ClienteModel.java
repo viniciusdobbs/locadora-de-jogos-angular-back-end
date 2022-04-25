@@ -1,13 +1,17 @@
 package com.api.locadoradejogos.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "TB_CLIENTE")
 public class ClienteModel extends PessoaModel {
 
-    @Column(nullable = false, length = 11)
+    @Column(name = "TE_TELEFONE", nullable = false, length = 11)
     private String telefoneCliente;
+
+    @OneToMany(mappedBy="cliente")
+    private List<LocacaoModel> locacao;
 
     public ClienteModel() {
         super();
