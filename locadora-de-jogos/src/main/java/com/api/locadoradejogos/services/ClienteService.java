@@ -1,9 +1,7 @@
 package com.api.locadoradejogos.services;
 
 import com.api.locadoradejogos.models.ClienteModel;
-import com.api.locadoradejogos.models.FuncionarioModel;
 import com.api.locadoradejogos.repositories.ClienteRepository;
-import com.api.locadoradejogos.repositories.FuncionarioRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;

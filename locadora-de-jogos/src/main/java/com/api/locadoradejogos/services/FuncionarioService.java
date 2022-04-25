@@ -1,9 +1,7 @@
 package com.api.locadoradejogos.services;
 
 import com.api.locadoradejogos.models.FuncionarioModel;
-import com.api.locadoradejogos.models.JogosModel;
 import com.api.locadoradejogos.repositories.FuncionarioRepository;
-import com.api.locadoradejogos.repositories.JogosRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

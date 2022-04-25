@@ -1,8 +1,6 @@
 package com.api.locadoradejogos.models;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
 @Table(name = "TB_CLIENTE")
