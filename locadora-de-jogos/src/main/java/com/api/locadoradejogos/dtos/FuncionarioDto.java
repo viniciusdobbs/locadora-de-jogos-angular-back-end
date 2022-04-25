@@ -2,7 +2,7 @@ package com.api.locadoradejogos.dtos;
 
 import javax.validation.constraints.NotBlank;
 
-public class FuncionariosDto {
+public class FuncionarioDto {
 
     @NotBlank
     private String nome;

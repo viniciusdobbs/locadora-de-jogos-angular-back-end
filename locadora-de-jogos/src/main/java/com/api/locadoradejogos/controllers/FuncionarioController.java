@@ -1,5 +1,6 @@
 package com.api.locadoradejogos.controllers;
 
+import com.api.locadoradejogos.dtos.FuncionarioDto;
 import com.api.locadoradejogos.models.FuncionarioModel;
 import com.api.locadoradejogos.models.JogosModel;
 import com.api.locadoradejogos.services.FuncionarioService;
