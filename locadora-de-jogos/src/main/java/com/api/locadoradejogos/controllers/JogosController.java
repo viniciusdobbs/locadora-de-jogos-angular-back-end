@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/jogos")
+@RequestMapping("/api/jogos")
 public class JogosController {
 
     final JogosService jogosService;

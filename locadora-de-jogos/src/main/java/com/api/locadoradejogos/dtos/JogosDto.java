@@ -1,5 +1,8 @@
 package com.api.locadoradejogos.dtos;
 
+import com.api.locadoradejogos.enums.ConsoleEnum;
+import com.api.locadoradejogos.enums.GeneroEnum;
+
 import javax.validation.constraints.NotBlank;
 
 public class JogosDto {
@@ -7,8 +10,11 @@ public class JogosDto {
     @NotBlank
     private String nome;
 
-    @NotBlank
-    private String genero;
+
+    private GeneroEnum genero;
+
+
+    private ConsoleEnum console;
 
     public String getNome() {
         return nome;
@@ -18,11 +24,19 @@ public class JogosDto {
         this.nome = nome;
     }
 
-    public String getGenero() {
+    public GeneroEnum getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(GeneroEnum genero) {
         this.genero = genero;
+    }
+
+    public ConsoleEnum getConsole() {
+        return console;
+    }
+
+    public void setConsole(ConsoleEnum console) {
+        this.console = console;
     }
 }
