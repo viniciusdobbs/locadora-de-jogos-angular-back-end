@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class JogosService {
@@ -23,5 +25,14 @@ public class JogosService {
 
     public List<JogosModel> findAll() {
         return jogosRepository.findAll();
+    }
+
+    public Optional<JogosModel> findById(UUID id){
+       return jogosRepository.findById(id);
+    }
+
+    @Transactional
+    public void delete(JogosModel jogosModel){
+        jogosRepository.delete(jogosModel);
     }
 }

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -33,5 +36,29 @@ public class JogosController {
     @GetMapping
     public ResponseEntity<List<JogosModel>> getTodosJogos(){
         return ResponseEntity.status(HttpStatus.OK).body(jogosService.findAll());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteJogos(@PathVariable(value = "id") UUID id){
+        Optional<JogosModel> jogosModelOptional = jogosService.findById(id);
+        if(!jogosModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Jogo não encontrado.");
+        }
+        jogosService.delete(jogosModelOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Jogo deletado com sucesso!");
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateJogos(@PathVariable(value = "id") UUID id,
+                                              @RequestBody @Valid JogosDto jogosDto){
+        Optional<JogosModel> jogosModelOptional = jogosService.findById(id);
+        if(!jogosModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Jogo não encontrado.");
+        }
+        JogosModel jogosModel = jogosModelOptional.get();
+        jogosModel.setNome(jogosDto.getNome());
+        jogosModel.setGenero(jogosDto.getGenero());
+        jogosModel.setConsole(jogosDto.getConsole());
+        return ResponseEntity.status(HttpStatus.OK).body(jogosService.save(jogosModel));
     }
 }
