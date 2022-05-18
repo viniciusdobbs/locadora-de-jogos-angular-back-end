@@ -10,9 +10,7 @@ public class JogosDto {
     @NotBlank
     private String nome;
 
-
     private GeneroEnum genero;
-
 
     private ConsoleEnum console;
 
