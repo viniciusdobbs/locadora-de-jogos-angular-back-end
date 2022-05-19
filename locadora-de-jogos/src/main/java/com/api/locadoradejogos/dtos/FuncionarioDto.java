@@ -8,7 +8,19 @@ public class FuncionarioDto {
     private String nome;
 
     @NotBlank
-    private String genero;
+    private String cpf;
+
+    @NotBlank
+    private String rg;
+
+    @NotBlank
+    private String email;
+
+    @NotBlank
+    private String endereco;
+
+    @NotBlank
+    private double salarioFunc;
 
     public String getNome() {
         return nome;
@@ -18,11 +30,43 @@ public class FuncionarioDto {
         this.nome = nome;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public double getSalarioFunc() {
+        return salarioFunc;
+    }
+
+    public void setSalarioFunc(double salarioFunc) {
+        this.salarioFunc = salarioFunc;
     }
 }

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class FuncionarioService {
@@ -23,6 +25,15 @@ public class FuncionarioService {
 
     public List<FuncionarioModel> findAll() {
         return funcionarioRepository.findAll();
+    }
+
+    public Optional<FuncionarioModel> findById(UUID id){
+        return funcionarioRepository.findById(id);
+    }
+
+    @Transactional
+    public void delete(FuncionarioModel funcionarioModel){
+        funcionarioRepository.delete(funcionarioModel);
     }
 
 }
