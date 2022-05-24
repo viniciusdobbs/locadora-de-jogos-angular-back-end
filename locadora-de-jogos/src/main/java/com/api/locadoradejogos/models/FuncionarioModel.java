@@ -24,12 +24,4 @@ public class FuncionarioModel extends PessoaModel{
     public void setSalarioFunc(double salarioFunc) {
         this.salarioFunc = salarioFunc;
     }
-
-    public List<LocacaoModel> getLocacao() {
-        return locacao;
-    }
-
-    public void setLocacao(List<LocacaoModel> locacao) {
-        this.locacao = locacao;
-    }
 }

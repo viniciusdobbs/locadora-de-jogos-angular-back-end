@@ -20,8 +20,6 @@ import java.util.UUID;
 @RequestMapping("/api/funcionarios")
 public class FuncionarioController {
 
-
-
     final FuncionarioService funcionarioService;
 
     public FuncionarioController(FuncionarioService funcionarioService) {
