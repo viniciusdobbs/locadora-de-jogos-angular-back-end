@@ -1,6 +1,7 @@
 package com.api.locadoradejogos.dtos;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class FuncionarioDto {
 
@@ -19,7 +20,7 @@ public class FuncionarioDto {
     @NotBlank
     private String endereco;
 
-    @NotBlank
+    @NotNull
     private double salarioFunc;
 
     public String getNome() {
