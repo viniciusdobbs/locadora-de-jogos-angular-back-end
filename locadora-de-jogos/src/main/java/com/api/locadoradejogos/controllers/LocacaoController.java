@@ -1,8 +1,10 @@
 package com.api.locadoradejogos.controllers;
 
 import com.api.locadoradejogos.dtos.LocacaoDto;
+import com.api.locadoradejogos.models.JogosModel;
 import com.api.locadoradejogos.models.LocacaoModel;
 import com.api.locadoradejogos.services.LocacaoService;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,13 +50,24 @@ public class LocacaoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateLocacao(@PathVariable(value = "id") UUID id,
-                                              @RequestBody @Valid Date dataDevolucao){
+                                                @RequestBody LocacaoDto locacaoDto){
         Optional<LocacaoModel> locacaoModelOptional = locacaoService.findById(id);
         if(!locacaoModelOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Locação não encontrada.");
         }
         LocacaoModel locacaoModel = locacaoModelOptional.get();
-        locacaoModel.setDataDevolucao(dataDevolucao);
-        return ResponseEntity.status(HttpStatus.OK).body(locacaoService.save(locacaoModel));
+        locacaoModel.setDataDevolucao(locacaoDto.getDataDevolucao());
+        locacaoService.save(locacaoModel);
+        return ResponseEntity.status(HttpStatus.OK).body(locacaoService.valorFinal(locacaoModel));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteLocacao(@PathVariable(value = "id") UUID id){
+        Optional<LocacaoModel> locacaoModelOptional = locacaoService.findById(id);
+        if(!locacaoModelOptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Locação não encontrada.");
+        }
+        locacaoService.delete(locacaoModelOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Locação deletada com sucesso!");
     }
 }

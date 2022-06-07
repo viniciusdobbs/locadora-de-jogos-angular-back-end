@@ -3,9 +3,11 @@ package com.api.locadoradejogos.dtos;
 import com.api.locadoradejogos.models.ClienteModel;
 import com.api.locadoradejogos.models.FuncionarioModel;
 import com.api.locadoradejogos.models.JogosModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 public class LocacaoDto {
 
@@ -23,6 +25,9 @@ public class LocacaoDto {
 
     @NotNull
     private FuncionarioModel funcionario;
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    private Date dataDevolucao;
 
     public double getValor() {
         return valor;
@@ -62,5 +67,13 @@ public class LocacaoDto {
 
     public void setFuncionario(FuncionarioModel funcionario) {
         this.funcionario = funcionario;
+    }
+
+    public Date getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(Date dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
 }
