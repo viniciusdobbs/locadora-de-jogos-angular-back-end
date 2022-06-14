@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface LocacaoRepository extends JpaRepository<LocacaoModel, UUID> {
 
-    @Query(value = "SELECT COUNT(l) FROM public.tb_locacao l WHERE l.id_cliente=?1", nativeQuery = true)
+    @Query(value = "SELECT COUNT(l) FROM public.tb_locacao l WHERE l.id_cliente=?1 AND l.dt_devolucao IS NULL", nativeQuery = true)
     long countCliente(UUID idPessoa);
 }

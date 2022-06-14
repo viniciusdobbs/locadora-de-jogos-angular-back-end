@@ -11,10 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -29,7 +26,13 @@ public class LocacaoController {
 
     @PostMapping
     public ResponseEntity<Object> saveLocacao(@RequestBody @Valid LocacaoDto locacaoDto){
-        Date dataLocacao = new Date();
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        Date dataLocacao = calendar.getTime();
         LocacaoModel locacaoModel = new LocacaoModel();
         BeanUtils.copyProperties(locacaoDto, locacaoModel);
         locacaoModel.setDataLocacao(dataLocacao);
@@ -57,8 +60,8 @@ public class LocacaoController {
         }
         LocacaoModel locacaoModel = locacaoModelOptional.get();
         locacaoModel.setDataDevolucao(locacaoDto.getDataDevolucao());
-        locacaoService.save(locacaoModel);
-        return ResponseEntity.status(HttpStatus.OK).body(locacaoService.valorFinal(locacaoModel));
+        //locacaoService.save(locacaoModel);
+        return ResponseEntity.status(HttpStatus.OK).body(locacaoService.update(locacaoModel));
     }
 
     @DeleteMapping("/{id}")
