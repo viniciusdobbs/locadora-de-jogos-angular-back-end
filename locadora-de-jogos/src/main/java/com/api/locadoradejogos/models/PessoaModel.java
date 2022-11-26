@@ -18,7 +18,7 @@ public abstract class PessoaModel implements Serializable {
     @Column(name = "TE_NOME", nullable = false, length = 100)
     private String nome;
 
-    @Column(name = "TE_CPF", nullable = false, length = 11)
+    @Column(name = "TE_CPF", nullable = false, length = 14)
     private String cpf;
 
     @Column(name = "TE_RG", nullable = false, length = 20)

@@ -1,11 +1,15 @@
 package com.api.locadoradejogos.dtos;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class ClienteDto {
 
     @NotBlank
     private String nome;
+
+    @NotNull
+    private Double idadeCliente;
 
     @NotBlank
     private String cpf;
@@ -28,6 +32,14 @@ public class ClienteDto {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Double getIdadeCliente() {
+        return idadeCliente;
+    }
+
+    public void setIdadeCliente(Double idadeCliente) {
+        this.idadeCliente = idadeCliente;
     }
 
     public String getCpf() {

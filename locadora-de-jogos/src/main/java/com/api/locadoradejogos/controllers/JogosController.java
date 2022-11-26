@@ -59,6 +59,12 @@ public class JogosController {
         jogosModel.setNome(jogosDto.getNome());
         jogosModel.setGenero(jogosDto.getGenero());
         jogosModel.setConsole(jogosDto.getConsole());
+        jogosModel.setPreco(jogosDto.getPreco());
         return ResponseEntity.status(HttpStatus.OK).body(jogosService.save(jogosModel));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<JogosModel>> getJogoById(@PathVariable(value = "id") UUID id){
+        return ResponseEntity.status(HttpStatus.OK).body(jogosService.findById(id));
     }
 }

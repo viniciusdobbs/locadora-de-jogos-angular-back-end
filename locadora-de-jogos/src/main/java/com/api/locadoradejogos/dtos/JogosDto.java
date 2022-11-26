@@ -4,6 +4,7 @@ import com.api.locadoradejogos.enums.ConsoleEnum;
 import com.api.locadoradejogos.enums.GeneroEnum;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class JogosDto {
 
@@ -13,6 +14,9 @@ public class JogosDto {
     private GeneroEnum genero;
 
     private ConsoleEnum console;
+
+    @NotNull
+    private double preco;
 
     public String getNome() {
         return nome;
@@ -36,5 +40,13 @@ public class JogosDto {
 
     public void setConsole(ConsoleEnum console) {
         this.console = console;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 }

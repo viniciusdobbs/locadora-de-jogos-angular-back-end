@@ -7,8 +7,11 @@ import java.util.List;
 @Table(name = "TB_CLIENTE")
 public class ClienteModel extends PessoaModel {
 
-    @Column(name = "TE_TELEFONE", nullable = false, length = 11)
+    @Column(name = "TE_TELEFONE", nullable = false, length = 20)
     private String telefoneCliente;
+
+    @Column(name = "NU_IDADE", nullable = false)
+    private double idadeCliente;
 
     @OneToMany(mappedBy="cliente")
     private List<LocacaoModel> locacao;
@@ -23,5 +26,13 @@ public class ClienteModel extends PessoaModel {
 
     public void setTelefoneCliente(String telefoneCliente) {
         this.telefoneCliente = telefoneCliente;
+    }
+
+    public double getIdadeCliente() {
+        return idadeCliente;
+    }
+
+    public void setIdadeCliente(double idadeCliente) {
+        this.idadeCliente = idadeCliente;
     }
 }

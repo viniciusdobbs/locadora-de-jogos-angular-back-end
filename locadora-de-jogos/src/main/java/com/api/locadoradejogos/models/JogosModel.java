@@ -29,6 +29,9 @@ public class JogosModel implements Serializable {
     @Enumerated(EnumType.STRING)
     private ConsoleEnum console;
 
+    @Column(name = "NU_PRECO", nullable = false, length = 10)
+    private double preco;
+
     @OneToMany(mappedBy="jogo")
     private List<LocacaoModel> locacao;
 
@@ -62,5 +65,13 @@ public class JogosModel implements Serializable {
 
     public void setConsole(ConsoleEnum console) {
         this.console = console;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 }

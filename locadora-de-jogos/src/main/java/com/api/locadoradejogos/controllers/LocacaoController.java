@@ -36,9 +36,10 @@ public class LocacaoController {
         LocacaoModel locacaoModel = new LocacaoModel();
         BeanUtils.copyProperties(locacaoDto, locacaoModel);
         locacaoModel.setDataLocacao(dataLocacao);
-        locacaoModel.setValorDia(locacaoService.valorDia(locacaoDto.getValor(), locacaoDto.getDia()));
+        int percentual = 2;
+        locacaoModel.setValorDia(locacaoService.valorDia(locacaoDto.getJogo().getPreco(), percentual));
         long quantidadeJogos = locacaoService.validarLocacao(locacaoModel.getCliente());
-        if(quantidadeJogos >= 3){
+        if(quantidadeJogos >= 2){
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Cliente ja esgotou o limite de locações");
         }
         else {

@@ -3,6 +3,7 @@ package com.api.locadoradejogos.controllers;
 
 import com.api.locadoradejogos.dtos.ClienteDto;
 import com.api.locadoradejogos.models.ClienteModel;
+import com.api.locadoradejogos.models.JogosModel;
 import com.api.locadoradejogos.services.ClienteService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
@@ -57,12 +58,18 @@ public class ClienteController {
         }
         ClienteModel clienteModel = clienteModelOptional.get();
         clienteModel.setNome(clienteDto.getNome());
+        clienteModel.setIdadeCliente(clienteDto.getIdadeCliente());
         clienteModel.setCpf(clienteDto.getCpf());
         clienteModel.setRg(clienteDto.getRg());
         clienteModel.setEmail(clienteDto.getEmail());
         clienteModel.setEndereco(clienteDto.getEndereco());
         clienteModel.setTelefoneCliente(clienteDto.getTelefoneCliente());
         return ResponseEntity.status(HttpStatus.OK).body(clienteService.save(clienteModel));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<ClienteModel>> getClienteById(@PathVariable(value = "id") UUID id){
+        return ResponseEntity.status(HttpStatus.OK).body(clienteService.findById(id));
     }
 
 }

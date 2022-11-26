@@ -25,6 +25,9 @@ public class LocacaoModel implements Serializable {
     @Column(name = "DT_DEVOLUCAO")
     private Date dataDevolucao;
 
+    @Column(name = "NU_VALOR_FINAL")
+    private double valorFinal;
+
     @ManyToOne
     @JoinColumn(name="ID_JOGO", referencedColumnName="ID_JOGO")
     private JogosModel jogo;
@@ -91,5 +94,13 @@ public class LocacaoModel implements Serializable {
 
     public void setFuncionario(FuncionarioModel funcionario) {
         this.funcionario = funcionario;
+    }
+
+    public double getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(double valorFinal) {
+        this.valorFinal = valorFinal;
     }
 }
